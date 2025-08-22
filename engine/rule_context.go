@@ -572,7 +572,7 @@ func (ctx *DefaultRuleContext) TellFlow(ruleChainId string, msg types.RuleMsg, o
 
 // TellNode 从指定节点开始执行，如果 skipTellNext=true 则只执行当前节点，不通知下一个节点。
 // onEnd 查看获得最终执行结果
-// onAllNodeCompleted 所以节点执行完触发，无结果返回
+// onAllNodeCompleted 所有节点执行完触发，无结果返回
 func (ctx *DefaultRuleContext) TellNode(chanCtx context.Context, nodeId string, msg types.RuleMsg, skipTellNext bool, onEnd types.OnEndFunc, onAllNodeCompleted func()) {
 	if nodeCtx, ok := ctx.ruleChainCtx.GetNodeById(types.RuleNodeId{Id: nodeId}); ok {
 		rootCtxCopy := NewRuleContext(chanCtx, ctx.config, ctx.ruleChainCtx, nil, nodeCtx, ctx.pool, onEnd, ctx.ruleChainPool)
